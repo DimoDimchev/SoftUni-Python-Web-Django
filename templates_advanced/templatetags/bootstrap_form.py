@@ -6,7 +6,10 @@ register = Library()
 @register.inclusion_tag('templates_advanced/tags/bootstrap_form.html')
 def bootstrap_form(form, method, action):
     for(_, field) in form.fields.items():
-        field.widget.attrs['class'] = 'form-control'
+        if 'class' in field.widget.attrs:
+            field.widget.attrs['class'] += ' form-control'
+        else:
+            field.widget.attrs['class'] = 'form-control'
 
     return {
         'form': form,
