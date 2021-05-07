@@ -1,5 +1,12 @@
 {% extends 'templates_advanced/shared/base.html' %} }
+{% load static %}
+
 {% block title %}Home | My page{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href={% static 'css/index.css' %}>
+{% endblock %}
+
 {% block content %}
     <h1>This is extended from the base template</h1>
 {% endblock %}
