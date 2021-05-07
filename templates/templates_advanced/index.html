@@ -9,4 +9,10 @@
 
 {% block content %}
     <h1>This is extended from the base template</h1>
+    <ul>
+        {% for todo_entry in todos%}
+            {% include 'templates_advanced/partials/todo_item.html' with todo=todo_entry %}
+        {% endfor %}
+    </ul>
+
 {% endblock %}

@@ -1,0 +1,7 @@
+<div>
+    {% if todo.is_done %}
+        <strong class="text-success">{{ todo.text }}</strong>
+        {% else %}
+            <strong class="text-danger">{{ todo.text }}</strong>
+    {% endif %}
+</div>
