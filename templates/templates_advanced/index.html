@@ -1,6 +1,8 @@
 {% extends 'templates_advanced/shared/base_sidebar.html' %} }
 {% load static %}
 {% load todos_filter %}
+{% load todos_details %}
+{% load bootstrap_form %}
 
 {% block title %}Home | My page{% endblock %}
 
@@ -13,10 +15,20 @@
 {% endblock %}
 
 {% block site_content %}
-    <h1>This is extended from the base template</h1>
+    {% bootstrap_form form=form method='post' action='my-action' %}
+    <h1>Variant 1</h1>
     <ul>
-        {% for todo_entry in todos|todos_filter:True %}
+        {#{% for todo_entry in todos|todos_filter:state %}#}
+        {% for todo_entry in todos %}
             {% include 'templates_advanced/partials/todo_item.html' with todo=todo_entry %}
+        {% endfor %}
+    </ul>
+
+    <h1>Variant 2</h1>
+    <ul>
+        {#{% for todo_entry in todos|todos_filter:state %}#}
+        {% for todo_entry in todos %}
+            {% todo_details todo=todo_entry %}
         {% endfor %}
     </ul>
 
