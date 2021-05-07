@@ -1,4 +1,4 @@
-{% extends 'templates_advanced/shared/base.html' %} }
+{% extends 'templates_advanced/shared/base_sidebar.html' %} }
 {% load static %}
 
 {% block title %}Home | My page{% endblock %}
@@ -7,7 +7,11 @@
     <link rel="stylesheet" href={% static 'css/index.css' %}>
 {% endblock %}
 
-{% block content %}
+{% block sidebar_content %}
+    <p>'Ello</p>
+{% endblock %}
+
+{% block site_content %}
     <h1>This is extended from the base template</h1>
     <ul>
         {% for todo_entry in todos%}
