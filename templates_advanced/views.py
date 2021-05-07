@@ -1,5 +1,10 @@
 from django.shortcuts import render
 
+from templates_advanced.models import Todo
+
 
 def index(request):
-    return render(request, 'templates_advanced/index.html')
+    context = {
+        'todos': Todo.objects.all(),
+    }
+    return render(request, 'templates_advanced/index.html', context)
