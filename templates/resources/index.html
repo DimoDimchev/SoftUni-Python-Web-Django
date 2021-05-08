@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Static & Media Files</title>
+</head>
+<body>
+    {% for pet in pets %}
+        <h1>{{ pet.name }}</h1>
+        <img src="{{ pet.image }}" alt="{{ pet.name }}">
+    {% endfor %}
+</body>
+</html>
