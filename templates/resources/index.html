@@ -5,9 +5,16 @@
     <title>Static & Media Files</title>
 </head>
 <body>
-    {% for pet in pets %}
-        <h1>{{ pet.name }}</h1>
-        <img src="{{ pet.image }}" alt="{{ pet.name }}">
-    {% endfor %}
+    <form action="/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button>Create</button>
+    </form>
+    <ul>
+        {% for pet in pets %}
+            <li>{{ pet.name }}</li>
+            <img src="{{ pet.image }}" alt="{{ pet.name }}">
+        {% endfor %}
+    </ul>
 </body>
 </html>
