@@ -1,0 +1,16 @@
+{% extends 'templates_advanced/shared/base.html' %}
+{% load static %}
+{% block content %}
+    <form action="{% url 'pets' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        {{ form.errors }}
+        <button>Create</button>
+    </form>
+    <ul>
+        {% for pet in pets %}
+            <li>{{ pet.name }}</li>
+            <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
+        {% endfor %}
+    </ul>
+{% endblock %}

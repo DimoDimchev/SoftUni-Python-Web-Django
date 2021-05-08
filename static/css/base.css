@@ -1,3 +1,7 @@
 body {
   background-color: darkgray;
 }
+
+img {
+  height: 150px;
+}
