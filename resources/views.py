@@ -1,6 +1,7 @@
 from os.path import join, isfile
 
 from django.conf import settings
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -29,8 +30,12 @@ def resources(request):
             return render(request, 'resources/pets.html', context)
 
 
-def serve_private_files(request, path):
+def serve_private_files(request):
+    path = 'documents/shortcuts.txt'
     full_path = join(settings.MEDIA_ROOT, 'private', path)
     if isfile(full_path):
-        pass
+        file = open(path, 'rb')
+        response = HttpResponse(content=file)
+        response['Content-Disposition'] = 'attachment'
+        return response
     return None
