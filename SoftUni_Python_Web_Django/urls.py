@@ -9,4 +9,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('templates_advanced.urls')),
     path('pets', include('resources.urls')),
+    path('auth/', include('auth_lecture.urls')),
 ] + static(settings.MEDIA_URL, document_root=join('media'))

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'templates_advanced',
     'resources',
+    'auth_lecture',
 ]
 
 MIDDLEWARE = [
