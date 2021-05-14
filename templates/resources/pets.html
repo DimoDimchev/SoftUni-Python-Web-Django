@@ -1,7 +1,7 @@
 {% extends 'templates_advanced/shared/base.html' %}
 {% load static %}
 {% block content %}
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and not user.is_superuser %}
         <p>Hello, {{ user.username }}</p><a href="{% url 'logout view' %}">Logout</a>
         {% else %}
             <a href="{% url 'login view' %}">Login</a>

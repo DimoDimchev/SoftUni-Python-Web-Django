@@ -1,6 +1,7 @@
 from os.path import join, isfile
 
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
@@ -9,6 +10,7 @@ from resources.forms import PetForm
 from resources.models import Pet
 
 
+@login_required(login_url='login view')
 def resources(request):
     if request.method == 'GET':
         context = {
