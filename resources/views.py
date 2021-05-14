@@ -6,11 +6,13 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from core.decorators import group_required
 from resources.forms import PetForm
 from resources.models import Pet
 
 
-@login_required(login_url='login view')
+# @login_required(login_url='login view')
+@group_required(groups=['Regular user'])
 def resources(request):
     if request.method == 'GET':
         context = {
