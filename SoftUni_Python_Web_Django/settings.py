@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'templates_advanced',
     'resources',
     'auth_lecture',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
