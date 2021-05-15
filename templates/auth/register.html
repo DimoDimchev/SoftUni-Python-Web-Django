@@ -1,0 +1,10 @@
+{% extends 'templates_advanced/shared/base.html' %}
+{% load static %}
+
+{% block content %}
+    <form method="post" action="{% url 'register user' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button>Create</button>
+    </form>
+{% endblock %}
