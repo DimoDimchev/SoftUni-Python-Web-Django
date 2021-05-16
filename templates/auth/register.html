@@ -4,9 +4,13 @@
 
 {% block content %}
     <h1 class="text-center">Register</h1>
-        <form method="POST" action="{% url 'register user' %}">
+{#        <div class="row d-flex justify-content-center">#}
+            <form method="POST" action="{% url 'register user' %}" enctype="multipart/form-data">
             {% csrf_token %}
-            {% bootstrap_form form=form %}
+            {{form}}
+            {{ second_form }}
             <button class="btn btn-primary">Register</button>
+            <p>or </p><a href="{% url 'login user' %}">Login</a>
         </form>
+{#        </div>#}
 {% endblock %}

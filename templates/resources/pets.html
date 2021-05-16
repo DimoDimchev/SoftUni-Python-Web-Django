@@ -1,10 +1,10 @@
 {% extends 'templates_advanced/shared/base.html' %}
 {% load static %}
 {% block content %}
-    {% if user.is_authenticated and not user.is_superuser %}
-        <p>Hello, {{ user.username }}</p><a href="{% url 'logout view' %}">Logout</a>
+    {% if user.is_authenticated%}
+        <p>Hello, {{ user.username }}</p><a href="{% url 'logout user' %}">Logout</a>
         {% else %}
-            <a href="{% url 'login view' %}">Login</a>
+            <a href="{% url 'login user' %}">Login</a>
     {% endif %}
     <form action="{% url 'pets' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -16,6 +16,9 @@
         {% for pet in pets %}
             <li>{{ pet.name }}</li>
             <img src="{{ pet.image.url }}" alt="{{ pet.name }}">
+            {% if pet.can_delete %}
+                <button class="btn btn-danger">Delete</button>
+            {% endif %}
         {% endfor %}
     </ul>
 {% endblock %}

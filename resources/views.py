@@ -11,12 +11,15 @@ from resources.forms import PetForm
 from resources.models import Pet
 
 
-# @login_required(login_url='login view')
+@login_required
 # @group_required(groups=['Regular user'])
 def resources(request):
     if request.method == 'GET':
+        pets = Pet.objects.all()
+        for pet in pets:
+            pet.can_delete = pet.created_by_id == request.user.id
         context = {
-            'pets': Pet.objects.all(),
+            'pets': pets,
             'form': PetForm
         }
         return render(request, 'resources/pets.html', context)
