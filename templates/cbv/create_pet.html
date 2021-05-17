@@ -1,0 +1,8 @@
+{% extends 'cbv/base/site.html' %}
+{% block page_content %}
+    <form method="post" action="{% url 'cbv create' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button>Create</button>
+    </form>
+{% endblock %}

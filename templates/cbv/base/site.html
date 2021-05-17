@@ -1,0 +1,8 @@
+{% extends 'templates_advanced/shared/base.html' %}
+
+{% block content %}
+    {% if heading_text %}
+        <h1>{{ heading_text }}</h1>
+    {% endif %}
+    {% block page_content %}{% endblock %}
+{% endblock %}

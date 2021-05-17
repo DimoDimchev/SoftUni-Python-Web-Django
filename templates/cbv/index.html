@@ -1,11 +1,12 @@
 {% extends 'templates_advanced/shared/base.html' %}
 
 {% block content %}
+    <a href="{% url 'cbv create' %}">Create pet</a>
     {% if heading_text %}
         <h1>{{ heading_text }}</h1>
     {% endif %}
     {% for pet in pets %}
-        <li><a href="{% url 'cbv index 4' pet.id %}">{{ pet.name }}</a></li>
+        <li><a href="{% url 'cbv details' pet.id %}">{{ pet.name }}</a></li>
     {% endfor %}
 
     {% if page_obj.has_previous %}

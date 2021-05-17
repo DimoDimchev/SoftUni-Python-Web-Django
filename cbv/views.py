@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.urls import reverse, reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
 from django.views.generic.base import View, TemplateView
 
 from resources.models import Pet
@@ -34,7 +35,7 @@ class IndexListView(ListView):
     template_name = 'cbv/index.html'
     model = Pet
     context_object_name = 'pets'
-    paginate_by = 1
+    paginate_by = 2
 
     def dispatch(self, request, *args, **kwargs):
         if 'page_size' in request.GET:
@@ -51,3 +52,17 @@ class IndexListView(ListView):
 class IndexDetailView(DetailView):
     template_name = 'cbv/details.html'
     model = Pet
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['heading_text'] = f"{context['pet'].name} details"
+
+        return context
+
+
+class IndexCreateView(CreateView):
+    fields = '__all__'
+    model = Pet
+    template_name = 'cbv/create_pet.html'
+    success_url = reverse_lazy('cbv list')
+
