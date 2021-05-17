@@ -1,5 +1,10 @@
 {% extends 'templates_advanced/shared/base.html' %}
 
 {% block content %}
-    <h1>Hello</h1>
+    {% if heading_text %}
+        <h1>{{ heading_text }}</h1>
+    {% endif %}
+    {% for pet in pets %}
+        <li>{{ pet.name }}</li>
+    {% endfor %}
 {% endblock %}
