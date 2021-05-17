@@ -5,7 +5,7 @@
         <h1>{{ heading_text }}</h1>
     {% endif %}
     {% for pet in pets %}
-        <li>{{ pet.name }}</li>
+        <li><a href="{% url 'cbv index 4' pet.id %}">{{ pet.name }}</a></li>
     {% endfor %}
 
     {% if page_obj.has_previous %}

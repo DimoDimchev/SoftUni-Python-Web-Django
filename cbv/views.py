@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.generic.base import View, TemplateView
 
 from resources.models import Pet
@@ -40,3 +40,14 @@ class IndexListView(ListView):
         if 'page_size' in request.GET:
             self.paginate_by = request.GET['page_size']
         return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['heading_text'] = 'Pets list'
+
+        return context
+
+
+class IndexDetailView(DetailView):
+    template_name = 'cbv/details.html'
+    model = Pet
