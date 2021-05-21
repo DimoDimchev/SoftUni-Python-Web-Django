@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import views as rest_views
+from rest_framework import views as rest_views, status
 from rest_framework.response import Response
 
 from books_api.models import Book
@@ -11,3 +11,10 @@ class BooksAPIView(rest_views.APIView):
         books = Book.objects.all()
         serializer = BookSerializer(books, many=True)
         return Response(serializer.data)
+
+    def post(self, request):
+        serializer = BookSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
