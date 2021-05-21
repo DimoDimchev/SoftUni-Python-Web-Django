@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'templates_advanced',
     'resources',
     'auth_lecture',
     'cbv',
+    'books_api',
 ]
 
 MIDDLEWARE = [
