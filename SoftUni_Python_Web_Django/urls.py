@@ -12,5 +12,6 @@ urlpatterns = [
     path('pets', include('resources.urls')),
     path('auth/', include('auth_lecture.urls')),
     path('cbv/', include('cbv.urls')),
-    path('books/', include('books_api.urls')),
+    path('api/books/', include('books_api.urls')),
+    path('books/', include('books.urls')),
 ] + static(settings.MEDIA_URL, document_root=join('media'))

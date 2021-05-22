@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'auth_lecture',
     'cbv',
     'books_api',
+    'books',
 ]
 
 MIDDLEWARE = [
