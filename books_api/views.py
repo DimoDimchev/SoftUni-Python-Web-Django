@@ -25,3 +25,8 @@ class BooksDetailsAPIView(rest_views.APIView):
         book = Book.objects.get(pk=pk)
         serializer = BookSerializer(book, many=False)
         return Response(serializer.data)
+
+    def delete(self, request, pk):
+        book = Book.objects.get(pk=pk)
+        book.delete()
+        return Response(status=status.HTTP_200_OK)
