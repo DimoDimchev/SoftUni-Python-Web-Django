@@ -6,7 +6,7 @@ from books_api.models import Book
 from books_api.serializers import BookSerializer
 
 
-class BooksAPIView(rest_views.APIView):
+class BooksListAPIView(rest_views.APIView):
     def get(self, request):
         books = Book.objects.all()
         serializer = BookSerializer(books, many=True)
@@ -18,3 +18,10 @@ class BooksAPIView(rest_views.APIView):
             serializer.save()
             return Response(data=serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class BooksDetailsAPIView(rest_views.APIView):
+    def get(self, request, pk):
+        book = Book.objects.get(pk=pk)
+        serializer = BookSerializer(book, many=False)
+        return Response(serializer.data)
