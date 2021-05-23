@@ -1,0 +1,1 @@
+web: gunicorn SoftUni_Python_Web_Django.wsgi
