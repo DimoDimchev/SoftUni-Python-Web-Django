@@ -14,4 +14,4 @@ urlpatterns = [
     path('cbv/', include('cbv.urls')),
     path('api/books/', include('books_api.urls')),
     path('books/', include('books.urls')),
-] + static(settings.MEDIA_URL, document_root=join('media'))
+] + static(settings.MEDIA_URL, document_root=join('media')) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
